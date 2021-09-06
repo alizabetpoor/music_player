@@ -1,0 +1,35 @@
+.musicplayer-container {
+  width: 50%;
+  height: 80%;
+  box-shadow: 1px 1px 4px rgb(231, 231, 231);
+}
+.music-controller li {
+  flex-grow: 1;
+  text-align: center;
+}
+.music-controller {
+  background-color: #2b2d5c;
+
+  color: white;
+}
+@media only screen and (max-width: 1024px) {
+  .musicplayer-container {
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .musicplayer-container {
+    width: 90%;
+    height: 90%;
+  }
+  .player {
+    width: 100%;
+  }
+  .music-cover img {
+    border-top-right-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+  }
+  .music-controller {
+    border-bottom-right-radius: 0.75rem;
+  }
+}

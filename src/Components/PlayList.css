@@ -1,0 +1,18 @@
+.playlist {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+}
+.playlist::-webkit-scrollbar {
+  display: none;
+}
+.active {
+  background-color: #1f2937;
+}
+.playlist div:last-child {
+  border: 0px;
+}
+@media only screen and (max-width: 640px) {
+  .playlist {
+    display: none;
+  }
+}
