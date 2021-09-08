@@ -1,11 +1,33 @@
+import { useEffect, useState } from "react";
 import "./PlayList.css";
 const PlayList = ({ musics, playSelectedSong, currentMusic }) => {
+  const [filtered, setFiltered] = useState(musics);
+  const [searchText, setSearchText] = useState("");
   const clickHandlerPlayList = (id) => {
     playSelectedSong(id);
   };
+  useEffect(() => {
+    if (searchText === "") {
+      setFiltered(musics);
+    } else {
+      const newList = musics.filter((item) =>
+        item.name.toLowerCase().includes(searchText)
+      );
+      setFiltered(newList);
+    }
+  }, [searchText, musics]);
   return (
     <div className="playlist w-4/12 overflow-y-scroll rounded-r-xl text-white">
-      {musics.map((item) => {
+      <div className="w-full">
+        <input
+          className="search-box w-full font-semibold text-black placeholder-gray-400 text-base p-2 outline-none border-0"
+          type="text"
+          placeholder="search the song name..."
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value.toLowerCase())}
+        />
+      </div>
+      {filtered.map((item) => {
         return (
           <div
             key={item.id}
@@ -27,6 +49,7 @@ const PlayList = ({ musics, playSelectedSong, currentMusic }) => {
           </div>
         );
       })}
+      {!filtered && <p>آهنگی با این اسم وجود ندارد</p>}
     </div>
   );
 };
